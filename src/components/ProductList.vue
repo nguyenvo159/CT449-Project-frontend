@@ -16,7 +16,7 @@
                 <div class="card border-0 ">
                     <img class="card-img-top " style="height: 240px; width: auto; object-fit: contain;"
                         :src="product.imgURL">
-                    <a @click="addToCart(index)" class="icon-cardplus card-overlay">
+                    <a class="icon-cardplus card-overlay">
                         <i class="fa-solid fa-cart-plus"></i>
                     </a>
                     <div class="card-body text-center text-justify">
@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import CartService from "@/services/cart.service";
 
 export default {
     props: {
@@ -50,18 +49,7 @@ export default {
             this.$emit("update:activeIndex", index);
             this.$emit("productClick", index);
         },
-        addToCart(index) {
-            const selectedProduct = this.products[index];
-            CartService.addToCart(selectedProduct._id, 1)
-                .then(response => {
-                    console.log("Product added to cart", response);
-                    // Update cart or show success message as needed
-                })
-                .catch(error => {
-                    console.error("Error adding product to cart", error);
-                    // Handle error, e.g., show an error message
-                });
-        },
+
     }
 };
 </script>
