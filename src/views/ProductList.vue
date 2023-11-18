@@ -88,6 +88,7 @@ export default {
             this.$router.push({ name: 'productDetail', params: { id: productId } });
         },
 
+
     },
     mounted() {
         console.log("Component is mounted!");

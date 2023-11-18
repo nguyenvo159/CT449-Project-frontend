@@ -5,6 +5,7 @@
             <p>Name: {{ user.name }}</p>
             <p>Email: {{ user.email }}</p>
             <p>Is Admin: {{ user.isAdmin }}</p>
+            <router-link :to="{ name: 'cart' }">View Cart</router-link>
             <a href="/" class="btn btn-dark" @click="logout">Logout</a>
         </div>
     </div>

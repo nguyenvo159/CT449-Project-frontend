@@ -1,18 +1,5 @@
-<script>
-export default {
-    props: {
-        products: { type: Array, default: [] },
-        activeIndex: { type: Number, default: -1 },
-    },
-    emits: ["update:activeIndex", "productClick"],
-    methods: {
-        updateActiveIndex(index) {
-            this.$emit("update:activeIndex", index);
-            this.$emit("productClick", index);
-        }
-    }
-};
-</script>
+
+
 <template>
     <!-- <ul class="list-group">
         <li class="list-group-item" v-for="(product, index) in products" :key="product._id"
@@ -29,7 +16,7 @@ export default {
                 <div class="card border-0 ">
                     <img class="card-img-top " style="height: 240px; width: auto; object-fit: contain;"
                         :src="product.imgURL">
-                    <a type="button" class="icon-cardplus card-overlay">
+                    <a @click="addToCart(index)" class="icon-cardplus card-overlay">
                         <i class="fa-solid fa-cart-plus"></i>
                     </a>
                     <div class="card-body text-center text-justify">
@@ -48,3 +35,33 @@ export default {
         </div>
     </div>
 </template>
+
+<script>
+import CartService from "@/services/cart.service";
+
+export default {
+    props: {
+        products: { type: Array, default: [] },
+        activeIndex: { type: Number, default: -1 },
+    },
+    emits: ["update:activeIndex", "productClick"],
+    methods: {
+        updateActiveIndex(index) {
+            this.$emit("update:activeIndex", index);
+            this.$emit("productClick", index);
+        },
+        addToCart(index) {
+            const selectedProduct = this.products[index];
+            CartService.addToCart(selectedProduct._id, 1)
+                .then(response => {
+                    console.log("Product added to cart", response);
+                    // Update cart or show success message as needed
+                })
+                .catch(error => {
+                    console.error("Error adding product to cart", error);
+                    // Handle error, e.g., show an error message
+                });
+        },
+    }
+};
+</script>

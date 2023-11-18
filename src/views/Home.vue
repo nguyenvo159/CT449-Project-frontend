@@ -29,9 +29,20 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+        <div class="container-fluid mt-5 mb-5 d-flex justify-content-center">
+            <div class="row justify-content-center align-items-center w-50">
+                <h2>Enjoy Your Youth!</h2>
+                <div class="col-12 text-center text-justify">
+                    <p class="">Không chỉ là thời trang, Amiri còn là “phòng thí nghiệm” của tuổi trẻ - nơi
+                        nghiên cứu và cho ra đời nguồn năng lượng mang tên “Youth”. Chúng mình luôn muốn tạo nên
+                        những trải nghiệm vui vẻ, năng động và trẻ trung.</p>
+                    <br>
+                </div>
+            </div>
+            <br><br><br><br>
+        </div>
         <div class="row">
             <div class="col-10 offset-1">
-                <hr>
                 <router-link :to="{ name: 'productShirt' }" class="main-hover">
                     <h4 class="mt-3">
                         Shirt
