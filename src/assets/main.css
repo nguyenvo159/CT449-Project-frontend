@@ -1,0 +1,104 @@
+:root {
+  --main-color: #d3ad7f;
+  --black: #13131a;
+  --border: 0.1rem solid rgba(255, 255, 255, 0.3);
+}
+
+.compare-price {
+  text-decoration: line-through;
+}
+
+.main-hover {
+  cursor: pointer;
+}
+
+.main-hover:hover {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+a.main-hover {
+  color: #13131a;
+  text-decoration: none;
+}
+
+.price {
+  color: #d52220;
+}
+
+.input_form {
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  border-radius: 4px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  padding: 0 8px;
+}
+
+/* Cart */
+.card-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  position: relative;
+  transition: transform 0.2s;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card:hover img.card-img-top {
+  transform: scale(1.2);
+}
+
+.card-overlay {
+  text-decoration: none;
+  position: absolute;
+  top: 2%;
+  right: -18%;
+  transition: right 0.4s;
+}
+
+.card:hover .card-overlay {
+  top: 2%;
+  right: 2%;
+}
+
+.card-overlay:hover i.fa-cart-plus {
+  color: blue;
+}
+
+.card-overlay i {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 24px;
+}
+
+/* Hiệu ứng  */
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slideInDown {
+  animation-name: slideInDown;
+  animation-duration: 0.5s;
+}
+
+#carouselExampleIndicators img {
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+}
