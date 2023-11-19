@@ -25,6 +25,7 @@ class ProductService {
     }
 
     async get(id) {
+        console.log("ID in ProductService.get:", id);
         return (await this.api.get(`/${id}`)).data;
     }
 

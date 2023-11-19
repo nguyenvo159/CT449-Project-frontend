@@ -1,9 +1,14 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/views/Home.vue";
+import About from "@/views/About.vue";
 import ProductList from "@/views/ProductList.vue";
 import ProductShirt from "@/views/ProductShirt.vue";
 import ProductPant from "@/views/ProductPant.vue";
 import ProductDetail from "@/views/ProductDetail.vue"
+import ProductManager from "@/views/manager/ProductManager.vue"
+import ProductEdit from "@/views/manager/ProductEdit.vue"
+import ProductCreate from "@/views/manager/ProductCreate.vue"
+
 
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
@@ -19,6 +24,11 @@ const routes = [
         path: "/",
         name: "home",
         component: Home,
+    },
+    {
+        path: "/about",
+        name: "about",
+        component: About,
     },
     {
         path: "/product",
@@ -40,8 +50,26 @@ const routes = [
         name: "productDetail",
         component: ProductDetail,
     },
-
-
+    {
+        path: "/product-manager",
+        name: "product-manager",
+        component: ProductManager,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: "/product/edit/:id",
+        name: "product.edit",
+        component: ProductEdit,
+        props: true,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: "/product/create",
+        name: "product.create",
+        component: ProductCreate,
+        props: true,
+        meta: { requiresAuth: true },
+    },
     // Auth
     {
         path: "/login",
@@ -60,8 +88,8 @@ const routes = [
         meta: { requiresAuth: true },
     },
     {
-        path: "/userManage",
-        name: "userManage",
+        path: "/user-manager",
+        name: "user-manager",
         component: UserManager,
         meta: { requiresAuth: true },
     },
@@ -82,11 +110,21 @@ const router = createRouter({
 // Kiểm tra xem người dùng đã đăng nhập khi chuyển đến trang cần đăng nhập
 router.beforeEach((to, from, next) => {
     const isLoggedIn = localStorage.getItem("token") !== null;
+    const isAdmin = isAdminUser();
     if (to.matched.some((record) => record.meta.requiresAuth) && !isLoggedIn) {
         next("/login");
-    } else {
+    }
+    else if (to.name == "product-manager" && !isAdmin) {
+        next("/");
+    }
+    else {
         next();
     }
 });
+
+function isAdminUser() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user && user.isAdmin === true;
+}
 
 export default router;

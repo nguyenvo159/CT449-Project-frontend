@@ -13,11 +13,11 @@
                             Hệ thống cửa hàng
                         </h5>
                         <p class="text-justify m-4"><b>TP Hồ Chí Minh</b> <br>
-                            5 đường số 2, khu phố 2, phường Tam Bình, TP. Thủ Đức
-                            182/13A Lê Văn Sỹ, Phường 10, quận Phú Nhuận.
+                            <i>5 đường số 2, khu phố 2, phường Tam Bình, TP. Thủ Đức
+                                182/13A Lê Văn Sỹ, Phường 10, quận Phú Nhuận.</i>
                         </p>
                         <p class="text-justify m-4"><b>TP Cần Thơ</b> <br>
-                            Ninh Kiều: 110/5/2 hẻm 5 đường Nguyễn Việt Hồng, Phường An Phú.
+                            <i>Ninh Kiều: 110/5/2 hẻm 5 đường Nguyễn Việt Hồng, Phường An Phú.</i>
                         </p>
 
                     </div>
@@ -63,7 +63,10 @@
                                     Products
                                 </router-link>
                             </li>
-                            <li class="mb-2"> <a class="text-white text-decoration-none" href="/">Contact</a>
+                            <li class="mb-2">
+                                <router-link :to="{ name: 'about' }" class="text-white text-decoration-none">
+                                    About us
+                                </router-link>
                             </li>
                         </ul>
                     </div>

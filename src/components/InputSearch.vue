@@ -19,7 +19,7 @@ export default {
     <div id="search-input" class="slideInDown d-none w-50 input-group">
         <span class="h5 pr-3 m-0 d-flex align-items-center">Tìm kiếm </span>
 
-        <input type="text" class="form-control" placeholder="Nhập thông tin cần tìm" :value="modelValue"
+        <input type="text" class="form-control" placeholder="Nhập thông tin cần tìm..." :value="modelValue"
             @input="updateModelValue" @keyup.enter="submit" />
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" @click="submit">

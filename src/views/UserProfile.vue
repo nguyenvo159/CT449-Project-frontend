@@ -1,11 +1,12 @@
 <template>
     <div class="container-fluid d-flex justify-content-center">
-        <div class="mt-4 col-md-10 d-flex justify-content-center align-items-center">
+        <div class="mt-4 col-md-10 d-flex justify-content-start align-items-center">
 
             <UserProfile />
 
-
         </div>
+
+
 
     </div>
 </template>

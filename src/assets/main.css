@@ -106,3 +106,40 @@ a.main-hover {
   width: 100%;
   object-fit: cover;
 }
+
+/* About page */
+
+.slogan-content {
+  width: 40%;
+  position: absolute;
+  right: 20px;
+  bottom: 50px;
+}
+
+.slogan-content p {
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 113.5%;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.slogan {
+  font-style: italic;
+  font-weight: 700;
+  font-size: 96px;
+  position: absolute;
+  color: #fff;
+}
+
+.slogan-left {
+  top: 0;
+  left: 0;
+}
+
+.slogan-right {
+  bottom: 0;
+  right: 20px;
+}

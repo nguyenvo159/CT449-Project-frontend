@@ -18,7 +18,7 @@
                         aria-expanded="false">
                         Products
                     </a>
-                    <div class="dropdown-menu">
+                    <div class="pb-0 mt-1 dropdown-menu border-0 rounded-0 bg-light">
                         <router-link :to="{ name: 'productList' }" class="dropdown-item">
                             All Products
                         </router-link>
@@ -31,10 +31,25 @@
 
                     </div>
                 </li>
-                <li class="p-2 mr-3 ml-3 nav-item">
-                    <a class="main-hover f-24" href="test.html">Contact</a>
+                <li class="p-2 mr-3 ml-3 nav-item dropdown">
+                    <router-link to="/about" class="main-hover f-24">About us</router-link>
                 </li>
+                <li class="p-2 mr-3 ml-3 nav-item dropdown" v-if="isAdmin">
+                    <a class="main-hover f-24 dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                        aria-expanded="false">
+                        Manager
+                    </a>
+                    <div class="pb-0 mt-1 dropdown-menu border-0 rounded-0 bg-light">
+                        <router-link :to="{ name: 'product-manager' }" class="dropdown-item">
+                            Product Manager
+                        </router-link>
+                        <router-link :to="{ name: 'user-manager' }" class="dropdown-item">
+                            User Manager
+                        </router-link>
 
+
+                    </div>
+                </li>
                 <li class="p-2 mr-3 ml-3 nav-item" v-if="!isLoggedIn">
                     <router-link to="/login" class="main-hover f-24">Login</router-link>
                 </li>
@@ -79,6 +94,13 @@ export default {
         isLoggedIn() {
             return localStorage.getItem("token") !== null;
         },
+        isAdmin() {
+            if (this.isLoggedIn) {
+                const user = JSON.parse(localStorage.getItem('user'));
+                return user.isAdmin == true;
+            }
+
+        }
     },
     methods: {
         // Hàm logout

@@ -5,7 +5,8 @@
             <p>Name: {{ user.name }}</p>
             <p>Email: {{ user.email }}</p>
             <p>Is Admin: {{ user.isAdmin }}</p>
-            <a href="/" class="btn btn-dark" @click="logout">Logout</a>
+            <a href="/" class="btn btn-dark" @click="logout">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </div>
     </div>
 </template>
