@@ -57,6 +57,9 @@ export default {
 
                 // Lưu token và thông tin người dùng vào localStorage
                 const token = response2.token;
+                const user_token = response2.user;
+
+                localStorage.setItem("userId", user_token._id);
                 localStorage.setItem("token", token);
                 localStorage.setItem("user", JSON.stringify(response2.user));
 

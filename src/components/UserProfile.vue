@@ -29,6 +29,7 @@ export default {
             // Xóa thông tin người dùng khi đăng xuất
             localStorage.removeItem("token");
             localStorage.removeItem('user');
+            localStorage.removeItem('userId');
             window.location.reload();
             window.location.href = "/";
 

@@ -53,7 +53,8 @@
                 <h5>Số lượng:</h5>
                 <div class="input-group mb-3" style="width: 130px;">
 
-                    <input type="hidden" name="productID" value="24">
+                    <input type="hidden" name="productID" :value="product._id">
+
                     <div class="input-group-prepend">
                         <button class="btn border rounded-0 decrease-quantity">
                             <i class="fas fa-minus"></i>
@@ -68,7 +69,7 @@
                     </div>
                 </div>
 
-                <button class="addFromDetai btn btn-dark pl-3 p-2 pr-3 rounded-0">Thêm vào giỏ</button>
+                <button class="addFromDetai btn btn-dark pl-3 p-2 pr-3 rounded-0" @click="addToCart">Thêm vào giỏ</button>
 
                 <!-- </form> -->
 
@@ -110,12 +111,28 @@
   
 <script>
 import ProductService from "@/services/product.service";
+import CartService from "@/services/cart.service";
 
 export default {
     data() {
         return {
             product: null,
         };
+    },
+    methods: {
+        async addToCart() {
+            try {
+                const userId = localStorage.getItem('userId');
+                const productId = this.product._id;
+                const quantity = parseInt(document.getElementById('quantityDetail').value);
+
+                await CartService.addToCart(userId, productId, quantity);
+                const updatedCart = await CartService.getCart(userId);
+                localStorage.setItem("cart", JSON.stringify(updatedCart));
+            } catch (error) {
+                console.error(error);
+            }
+        },
     },
     async mounted() {
         // Lấy thông tin sản phẩm từ API sử dụng ProductService

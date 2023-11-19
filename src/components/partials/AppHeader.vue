@@ -56,9 +56,9 @@
             <div class=" d-flex align-items-center">
                 <a id="search-btn" class="ml-3 text-dark" href="#"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a>
 
-                <!-- <router-link :to="{ name: 'cart' }" class="ml-3 text-dark">
+                <router-link :to="{ name: 'cart' }" class="ml-3 text-dark">
                     <i class="fa-solid fa-cart-shopping fa-lg"></i>
-                </router-link> -->
+                </router-link>
 
                 <router-link :to="{ name: 'userProfile', params: { id: 'currentUserId' } }" class="ml-3 text-dark"
                     v-if="isLoggedIn">
