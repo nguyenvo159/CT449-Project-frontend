@@ -36,13 +36,13 @@ export default {
             const response = await UserService.getAllUsers();
             this.users = response.users;
         } catch (error) {
-            console.error(error); // handle error (show message, etc.)
+            console.error(error);
         }
     },
     methods: {
         async editUser(userId) {
             // Chuyển hướng đến trang chỉnh sửa người dùng
-            // this.$router.push({ name: "user.edit", params: { id: userId } });
+            this.$router.push({ name: "user.edit", params: { id: userId } });
         },
         async deleteUser(userId) {
             if (confirm("Bạn muốn xóa người dùng này?")) {

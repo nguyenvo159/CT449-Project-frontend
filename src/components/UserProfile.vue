@@ -5,7 +5,10 @@
             <p>Name: {{ user.name }}</p>
             <p>Email: {{ user.email }}</p>
             <p>Is Admin: {{ user.isAdmin }}</p>
-            <a href="/" class="btn btn-dark" @click="logout">
+            <button class="btn btn-primary" @click="editUser(user._id)">Sửa</button>
+
+            <a href="/" class=" ml-3 btn btn-dark" @click="logout">
+
                 <i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </div>
     </div>
@@ -26,6 +29,10 @@ export default {
         }
     },
     methods: {
+        async editUser(userId) {
+            // Chuyển hướng đến trang chỉnh sửa người dùng
+            this.$router.push({ name: "user.edit", params: { id: userId } });
+        },
         logout() {
             // Xóa thông tin người dùng khi đăng xuất
             localStorage.removeItem("token");

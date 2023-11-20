@@ -14,6 +14,7 @@ import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 import UserProfile from "@/views/UserProfile.vue";
 import UserManager from "@/views/UserManager.vue";
+import UserEdit from "@/views/UserEdit.vue";
 
 import Cart from "@/views/Cart.vue";
 
@@ -93,6 +94,14 @@ const routes = [
         component: UserManager,
         meta: { requiresAuth: true },
     },
+
+    {
+        path: "/user/edit/:id",
+        name: "user.edit",
+        component: UserEdit,
+        props: true,
+        meta: { requiresAuth: true },
+    },
     {
         path: "/cart",
         name: "cart",
@@ -115,6 +124,15 @@ router.beforeEach((to, from, next) => {
         next("/login");
     }
     else if (to.name == "product-manager" && !isAdmin) {
+        next("/");
+    }
+    else if (to.name == "product.create" && !isAdmin) {
+        next("/");
+    }
+    else if (to.name == "product.edit" && !isAdmin) {
+        next("/");
+    }
+    else if (to.name == "user-manager" && !isAdmin) {
         next("/");
     }
     else {
