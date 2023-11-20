@@ -75,8 +75,7 @@
                     <i class="fa-solid fa-cart-shopping fa-lg"></i>
                 </router-link>
 
-                <router-link :to="{ name: 'userProfile', params: { id: 'currentUserId' } }" class="ml-3 text-dark"
-                    v-if="isLoggedIn">
+                <router-link :to="{ name: 'user-profile' }" class="ml-3 text-dark" v-if="isLoggedIn">
                     <i class="fa-solid fa-user fa-lg"></i>
                 </router-link>
             </div>

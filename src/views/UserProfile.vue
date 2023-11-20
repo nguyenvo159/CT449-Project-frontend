@@ -1,10 +1,14 @@
 <template>
-    <div class="container-fluid d-flex justify-content-center">
-        <div class="mt-4 col-md-10 d-flex justify-content-start align-items-center">
+    <div class="container d-flex justify-content-center">
+        <div class="mt-4 col-md-10 justify-content-start align-items-center">
 
             <UserProfile />
+            <br>
+            <hr>
+            <Order />
 
         </div>
+
 
 
 
@@ -14,10 +18,12 @@
 <script>
 
 import UserProfile from "@/components/UserProfile.vue";
+import Order from "@/views/Order.vue";
 
 export default {
     components: {
         UserProfile,
+        Order,
     },
     data() {
         return {

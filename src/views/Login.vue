@@ -9,8 +9,9 @@
                     <br />
                     <label for="password-login">Password:</label>
                     <input id="password-login" class="form-control" v-model="password" type="password" required />
+                    <span class="text-danger mt-1 mb-2" v-if="loginError">Thông tin đăng nhập sai</span>
                     <br />
-                    <button class="btn btn-secondary" type="submit">Login</button>
+                    <button class="btn btn-secondary mt-2" type="submit">Login</button>
                 </form>
             </div>
         </div>
@@ -25,11 +26,14 @@ export default {
         return {
             email: "",
             password: "",
+            loginError: false,
         };
     },
     methods: {
         async login() {
             try {
+                this.loginError = false;
+
                 const credentials = { email: this.email, password: this.password };
                 const response = await UserService.login(credentials);
 
@@ -45,7 +49,9 @@ export default {
                 window.location.reload();
                 window.location.href = "/";
             } catch (error) {
-                console.error(error); // handle error (show message, etc.)
+                this.loginError = true;
+
+                console.error(error, "Sai"); // handle error (show message, etc.)
             }
         },
     },

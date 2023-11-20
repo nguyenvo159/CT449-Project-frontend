@@ -83,8 +83,8 @@ const routes = [
         component: Register,
     },
     {
-        path: "/user/:id",
-        name: "userProfile",
+        path: "/profile",
+        name: "user-profile",
         component: UserProfile,
         meta: { requiresAuth: true },
     },
@@ -108,6 +108,8 @@ const routes = [
         component: Cart,
         meta: { requiresAuth: true },
     },
+
+
 
 
 ];
