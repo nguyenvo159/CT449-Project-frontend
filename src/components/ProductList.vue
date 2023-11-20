@@ -16,7 +16,7 @@
                 <div class="card border-0 ">
                     <img class="card-img-top " style="height: 240px; width: auto; object-fit: contain;"
                         :src="product.imgURL">
-                    <a class="icon-cardplus card-overlay">
+                    <a class="icon-cardplus card-overlay" @click="addToCart(product)">
                         <i class="fa-solid fa-cart-plus"></i>
                     </a>
                     <div class="card-body text-center text-justify">
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import CartService from "@/services/cart.service";
 
 export default {
     props: {
@@ -49,7 +50,22 @@ export default {
             this.$emit("update:activeIndex", index);
             this.$emit("productClick", index);
         },
+        addToCart(product) {
+            try {
+                const userId = localStorage.getItem('userId');
+                const productId = product._id;
+                const quantity = 1; // You can set the default quantity here or provide a way for the user to specify it
 
+                // Thêm vào giỏ hàng
+                CartService.addToCart(userId, productId, quantity);
+
+                // Cập nhật giỏ hàng
+                const updatedCart = CartService.getCart(userId);
+                localStorage.setItem("cart", JSON.stringify(updatedCart));
+            } catch (error) {
+                console.error(error);
+            }
+        },
     }
 };
 </script>

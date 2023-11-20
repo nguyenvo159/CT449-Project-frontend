@@ -56,14 +56,14 @@
                     <input type="hidden" name="productID" :value="product._id">
 
                     <div class="input-group-prepend">
-                        <button class="btn border rounded-0 decrease-quantity">
+                        <button class="btn border rounded-0 decrease-quantity" @click="decreaseQuantity">
                             <i class="fas fa-minus"></i>
                         </button>
                     </div>
                     <input type="text" id="quantityDetail" name="quantity" class="form-control input-number text-center"
                         value="1" min="1" max="100">
                     <div class="input-group-append">
-                        <button class="btn border rounded-0 increase-quantity">
+                        <button class="btn border rounded-0 increase-quantity" @click="increaseQuantity">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
@@ -129,9 +129,24 @@ export default {
                 await CartService.addToCart(userId, productId, quantity);
                 const updatedCart = await CartService.getCart(userId);
                 localStorage.setItem("cart", JSON.stringify(updatedCart));
+                window.location.href = "/cart";
             } catch (error) {
                 console.error(error);
             }
+        },
+        decreaseQuantity() {
+            const quantityInput = document.getElementById('quantityDetail');
+            let currentQuantity = parseInt(quantityInput.value);
+            if (currentQuantity > 1) {
+                currentQuantity--;
+                quantityInput.value = currentQuantity;
+            }
+        },
+        increaseQuantity() {
+            const quantityInput = document.getElementById('quantityDetail');
+            let currentQuantity = parseInt(quantityInput.value);
+            currentQuantity++;
+            quantityInput.value = currentQuantity;
         },
     },
     async mounted() {
